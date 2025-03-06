@@ -1,0 +1,33 @@
+[
+  {
+    "method": "POST",
+    "url": "https://api.venmo.com/graphql",
+    "email": false,
+    "number": 1,
+    "data": null,
+    "json": {
+      "operationName": "editPrimaryPhone",
+      "query": "mutation editPrimaryPhone($input: EditPrimaryPhoneInput!) {\n  editPrimaryPhone(input: $input) {\n    phoneNumber\n    __typename\n  }\n}\n",
+      "variables": {
+        "input": {
+          "phoneNumber": "{number}"
+        }
+      }
+    },
+    "params": null,
+    "headers": null
+  },
+  {
+    "method": "POST",
+    "url": "https://substack.com/api/v1/reader/signup/just_email",
+    "email": true,
+    "number": null,
+    "data": null,
+    "json": {
+      "publicationIds": "458709,10845,556800,329241,35345,471923,737237",
+      "email": "{email}"
+    },
+    "params": null,
+    "headers": null
+  }
+]
