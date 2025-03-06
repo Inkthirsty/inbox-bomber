@@ -14,21 +14,19 @@
   },
   {
     "email": true,
-    "url": "https://www.giftstore.co.uk/api/user/register",
-
-    "data":
-
-	  {
-		"firstName": "Stop",
-		"lastName": "Why",
-		"email": "{email}",
-		"telephone": "1234",
-		"altTelephone": "",
-		"oneTimePassword": "",
-		"password": "*A2QVEau-A67Lke",
-		"passwordConfirm": "*A2QVEau-A67Lke",
-		"okToMail": "true",
-		"agreeToTerms": "true"
-	}
+    "url": "https://eu-central-1.api.clockify.me/auth/verification/code/{email}",
+    "json": {
+      "terms": [
+        {
+          "term": "Cake"
+        }
+      ],
+      "timeZone": "Europe/London",
+      "currentLang": "en",
+      "abTestingTrackingRequest": {
+        "test": "Mega menu changed - A"
+      }
+    }
+	  
   }
 ]
