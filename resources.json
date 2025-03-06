@@ -11,5 +11,22 @@
         }
       }
     }
+  },
+  {
+    "email": true,
+    "url": "https://www.ani-motion.net/api/account/public/users",
+
+    "json":{
+	"email": "{email}",
+	"emailConfirmed": false,
+	"fullName": "",
+	"id": "",
+	"isEnabled": true,
+	"isLockedOut": false,
+	"newPassword": "XE?B6]SdxK\"^d}W",
+	"phoneNumber": "",
+	"roles": [],
+	"userName": "{username}"
+}
   }
 ]
