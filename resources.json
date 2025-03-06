@@ -1,10 +1,7 @@
 [
   {
-    "method": "POST",
-    "url": "https://api.venmo.com/graphql",
-    "email": false,
     "number": 1,
-    "data": null,
+    "url": "https://api.venmo.com/graphql",
     "json": {
       "operationName": "editPrimaryPhone",
       "query": "mutation editPrimaryPhone($input: EditPrimaryPhoneInput!) {\n  editPrimaryPhone(input: $input) {\n    phoneNumber\n    __typename\n  }\n}\n",
@@ -13,27 +10,17 @@
           "phoneNumber": "{number}"
         }
       }
-    },
-    "params": null,
-    "headers": null
+    }
   },
   {
     "email": true,
-    "url": "https://www.altontowers.com/umbraco/api/signupform/submit",
-    "json": {
-      "__RequestVerificationToken": "",
-      "Language": "en",
-      "Attraction": "PAT",
-      "Campaign": "brandsite",
-      "Source": "Website",
-      "SourceDetail": "www.altontowers.com/sign-up/",
-      "ConsentType": "Merlin Global",
-      "FallbackCountry": "GB",
-      "EnableRecaptcha": "False",
-      "Email": "{email}",
-      "FirstName": "{username}",
-      "Lastname": "George",
-      "Permission": "on"
-    }
+    "url": "https://home.bargains/api/authentication/register",
+"json":{
+	"email": "{email}",
+	"nameFirst": "Eric",
+	"nameLast": "Cartman",
+	"password": "what1234!",
+	"passwordConfirm": "what1234!"
+}
   }
 ]
