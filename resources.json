@@ -19,14 +19,37 @@
   },
   {
     "method": "POST",
-    "url": "https://substack.com/api/v1/reader/signup/just_email",
+    "url": "https://secure.arabcast.tv/",
     "email": true,
     "number": null,
-    "data": null,
-    "json": {
-      "publicationIds": "458709,10845,556800,329241,35345,471923,737237",
-      "email": "{email}"
-    },
+    "data": {
+	"username": "{username}",
+	"password": "imgay1234",
+	"repassword": "imgay1234",
+	"email": "{email}",
+	"mobile": "+17132919826",
+	"method": "register",
+	"referer": ";"
+},
+    "json": null,
+    "params": null,
+    "headers": null
+  },
+  {
+    "method": "POST",
+    "url": "https://secure.arabcast.tv/",
+    "email": false,
+    "number": 1,
+    "data": {
+	"username": "{username}",
+	"password": "imgay1234",
+	"repassword": "imgay1234",
+	"email": "{email}",
+	"mobile": "{number}",
+	"method": "register",
+	"referer": ";"
+},
+    "json": null,
     "params": null,
     "headers": null
   }
