@@ -21,9 +21,9 @@ def clear():
     print(TITLE)
 
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0"}
-TIMEOUT = aiohttp.ClientTimeout(total=1)
-SOURCE = "https://raw.githack.com/Inkthirsty/inbox-bomber/refs/heads/main/resources.json"
-DEBUG = True  # Set this to False to disable debug prints
+TIMEOUT = aiohttp.ClientTimeout(total=5)
+SOURCE = "https://raw.githack.com/Inkthirsty/inbox-bomber/main/resources.json"
+DEBUG = False  # Set this to False to disable debug prints
 
 # Global variables for sent and errors
 sent = 0
@@ -130,7 +130,7 @@ async def main():
         
         while True:
             clear()
-            print(f"Examples: {Fore.BLUE}hello@example.com{Fore.RESET} | {Fore.BLUE}+1 (202) 555-0173{Fore.RESET} | {Fore.BLUE}+44 20 7946 0958{Fore.RESET} | {Fore.BLUE}+12025550173{Fore.RESET}")
+            print(f"Examples: {Fore.BLUE}hello@example.com{Fore.RESET} | {Fore.BLUE}+1 (202) 555-0173{Fore.RESET} | {Fore.BLUE}+44 20 7946 0958{Fore.RESET} | {Fore.BLUE}12025550173{Fore.RESET}")
             print("Input an email address or phone number")
             INPUT = input("> ")
             PROCESSED = identify(INPUT)
@@ -141,22 +141,26 @@ async def main():
         
         async with aiohttp.ClientSession(headers=DEFAULT_HEADERS, timeout=TIMEOUT) as session:
             TYPE = PROCESSED.get("Type")
-            logging.info(f"Identified Type: {Fore.YELLOW}{TYPE}{Fore.RESET}")
+            logging.info(f"Input type: {Fore.CYAN}{TYPE}{Fore.RESET}")
             if TYPE == "Number":
                 async with session.get("https://country.io/names.json") as resp:
                     countries = await resp.json()
-                print(f"Country: {Fore.YELLOW}{countries.get(PROCESSED.get('Country'))} ({PROCESSED.get('Code')}){Fore.RESET}")
+                logging.info(f"Country: {Fore.BLUE}{countries.get(PROCESSED.get('Country'))} ({PROCESSED.get('Code')}){Fore.RESET}")
                 THREADS = 1
-            else:
-                f = lambda s:s[11:]and[s[0]+w+x for x in f(s[1:])for w in('.','')]or[s]
-                COMBOS = f(PROCESSED.get("Email"))
+            elif TYPE == "Email":
+                EMAIL = PROCESSED.get("Email")
+                if "." in EMAIL.split("@")[0]:
+                    COMBOS = [EMAIL]
+                else:
+                    f = lambda s:s[11:]and[s[0]+w+x for x in f(s[1:])for w in('.','')]or[s]
+                    COMBOS = f(EMAIL)
                 LIMIT = clamp(len(COMBOS), 1, 1_000)
                 print(f"How many emails per request? 1-{LIMIT}")
                 try:
                     THREADS = clamp(int(input("> ")), 1, LIMIT)
                 except Exception:
                     THREADS = LIMIT
-            print(f"Threads: {Fore.YELLOW}{THREADS:,}{Fore.RESET}")
+            logging.info(f"Threads: {Fore.CYAN}{THREADS:,}{Fore.RESET}")
             async with session.get(SOURCE) as resp:
                 resp_json = json.loads(await resp.text())
                 logging.info(f"Fetched data from {SOURCE}")
