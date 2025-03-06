@@ -19,14 +19,21 @@
   },
   {
     "email": true,
-    "url": "https://www.bbcgoodfood.com/api/pages/forms/newsletter-signup",
-    "data": {
-      "newsletter": "nl_bbcgf_health--850",
-      "email": "{email}"
-    },
-    "headers": {
-      "Host": "www.bbcgoodfood.com",
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0"
+    "url": "https://www.altontowers.com/umbraco/api/signupform/submit",
+    "json": {
+      "__RequestVerificationToken": "",
+      "Language": "en",
+      "Attraction": "PAT",
+      "Campaign": "brandsite",
+      "Source": "Website",
+      "SourceDetail": "www.altontowers.com/sign-up/",
+      "ConsentType": "Merlin Global",
+      "FallbackCountry": "GB",
+      "EnableRecaptcha": "False",
+      "Email": "{email}",
+      "FirstName": "{username}",
+      "Lastname": "George",
+      "Permission": "on"
     }
   }
 ]
