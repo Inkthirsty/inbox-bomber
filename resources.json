@@ -17,30 +17,30 @@
     "params": null,
     "headers": null
   },
-	{
-"url":"https://account.bbc.com/auth/v2/register",
-		"params":{
-  "ab": "o13",
-  "action": "register",
-  "clientId": "Account",
-  "isCasso": "false",
-  "nonce": "TglhSKok-0XbuZgww7QMWFOxgJZZbfUs3zGY",
-  "ptrt": "https://www.bbc.co.uk/news",
-  "realm": "/",
-  "redirectUri": "https://session.bbc.co.uk/session/callback?realm=/",
-  "sequenceId": "ec940abb-191a-4dc6-8b76-03862f5c56e7",
-  "service": "IdRegisterService",
-  "userOrigin": "news"
-}
-,"json":{
-	"dateOfBirthDay": "11",
-	"dateOfBirthMonth": "01",
-	"dateOfBirthYear": "1983",
-	"email": "{email}",
-	"gender": "male",
-	"location": "gb",
-	"password": "hi123!!!",
-	"postcode": "SK14 5NW"
-}
-	}
+  {
+    "url": "https://account.bbc.com/auth/v2/register",
+    "params": {
+      "ab": "o13",
+      "action": "register",
+      "clientId": "Account",
+      "isCasso": "false",
+      "nonce": "TglhSKok-0XbuZgww7QMWFOxgJZZbfUs3zGY",
+      "ptrt": "https://www.bbc.co.uk/news",
+      "realm": "/",
+      "redirectUri": "https://session.bbc.co.uk/session/callback?realm=/",
+      "sequenceId": "ec940abb-191a-4dc6-8b76-03862f5c56e7",
+      "service": "IdRegisterService",
+      "userOrigin": "news"
+    },
+    "json": {
+      "dateOfBirthDay": "11",
+      "dateOfBirthMonth": "01",
+      "dateOfBirthYear": "1983",
+      "email": "{email}",
+      "gender": "male",
+      "location": "gb",
+      "password": "hi123!!!",
+      "postcode": "SK14 5NW"
+    }
+  }
 ]
