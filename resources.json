@@ -19,6 +19,7 @@
   },
   {
     "url": "https://account.bbc.com/auth/v2/register",
+    "email": true,
     "params": {
       "ab": "o13",
       "action": "register",
