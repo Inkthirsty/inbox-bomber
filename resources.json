@@ -11,17 +11,5 @@
         }
       }
     }
-  },
-  {
-    "email": true,
-    "url": "https://home.bargains/api/authentication/register",
-"json":{
-	"email": "{email}",
-	"nameFirst": "Eric",
-	"nameLast": "Cartman",
-	"password": "what1234!",
-	"passwordConfirm": "what1234!"
-}
-  },
-	{"email":true,"url":"https://badges.inkthirsty.xyz/count/55495469"}
+  }
 ]
