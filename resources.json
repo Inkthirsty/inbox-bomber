@@ -60,5 +60,20 @@
         "email": "{email}",
         "jsonp": "true"
     }
+  },
+  {
+    "email":true,
+    "url":"https://cbphandlers.setmore.com/handlers/graphql?operation=CreateReview",
+    "json":{
+	"operationName": "CreateReview",
+	"query": "mutation CreateReview($author: String!, $companyId: ID!, $email: String!, $rating: String!, $review: String!) {\n  createReview(\n    data: {author: $author, companyId: $companyId, email: $email, rating: $rating, review: $review}\n  ) {\n    response\n    __typename\n  }\n}",
+	"variables": {
+		"author": "a",
+		"companyId": "fc4dc815-b4fc-471f-980e-2da2a766f692",
+		"email": "{email}",
+		"rating": "5",
+		"review": "I love bike"
+	}
+}
   }
 ]
