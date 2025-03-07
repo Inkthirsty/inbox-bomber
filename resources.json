@@ -113,5 +113,13 @@
 	"state": "AL",
 	"newsletter": "on"
 }
-  }
+  },
+	{
+		"email":true,
+		"url":"https://cbart.net/api/register.php",
+		"params":{
+			"send_email_code":"1",
+			"email":"{email}"
+		}
+	}
 ]
