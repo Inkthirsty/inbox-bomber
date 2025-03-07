@@ -21,9 +21,10 @@ def clear():
     print(TITLE)
 
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0"}
-TIMEOUT = aiohttp.ClientTimeout(total=5)
-SOURCE = "https://raw.githack.com/Inkthirsty/inbox-bomber/main/resources.json"
-DEBUG = False  # Set this to False to disable debug prints
+TIMEOUT = aiohttp.ClientTimeout(3)
+SOURCE = "https://raw.githubusercontent.com/Inkthirsty/inbox-bomber/refs/heads/main/resources.json"
+DEBUG = False
+ONLY_TEST_LAST = False
 
 # Global variables for sent and errors
 sent = 0
@@ -105,13 +106,17 @@ async def request(
                 logging.info(f"Request to {fix(url).split('/')[2]} succeeded with status {resp.status}")
                 logging.debug(f"Response: {await resp.text()}")
             if pbar:
+                # Update the progress bar with the sent count
+                pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
                 pbar.update(1)  # Update progress bar for each successful request
             return True
     except Exception as e:
         errors += 1  # Increment errors counter if an exception occurs
         if DEBUG:
-            logging.error(e)
+            logging.error(f"{e}")
         if pbar:
+            # Update the progress bar with the errors count
+            pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
             pbar.update(1)  # Update progress bar for each failed request
         return False
 
@@ -166,6 +171,8 @@ async def main():
                 logging.info(f"Fetched data from {SOURCE}")
                 batch_size = 200
                 selection = [i for i in resp_json if i.get(TYPE.lower()) is not None and i.get(TYPE.lower()) is not False]
+                if ONLY_TEST_LAST:
+                    selection = selection[-1:]
                 if TYPE == "Number":
                     functions = [
                         (session, 
