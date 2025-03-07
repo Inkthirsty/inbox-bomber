@@ -123,6 +123,33 @@
           }
         }
       }
-    }
+    },
+    "params":{
+  ":authority": "a.klaviyo.com",
+  ":method": "POST",
+  ":path": "/client/subscriptions/?company_id=QRQcvq&onsite=true",
+  ":scheme": "https",
+  "accept": "application/json",
+  "accept-encoding": "gzip, deflate, br, zstd",
+  "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+  "access-control-allow-headers": "*",
+  "content-length": "1563",
+  "content-type": "application/json",
+  "origin": "https://www.paramountshop.co.uk",
+  "priority": "u=1, i",
+  "referer": "https://www.paramountshop.co.uk/",
+  "revision": "2025-01-15",
+  "sec-ch-ua": "\"Not(A:Brand\";v=\"99\", \"Google Chrome\";v=\"133\", \"Chromium\";v=\"133\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "cross-site",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+  "x-datadome-clientid": ".keep",
+  "x-klaviyo-js-url": "path",
+  "x-klaviyo-onsite": "1"
+}
+
   }
 ]
