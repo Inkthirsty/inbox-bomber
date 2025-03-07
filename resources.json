@@ -14,141 +14,39 @@
   },
   {
     "email": true,
-    "url": "https://a.klaviyo.com/client/subscriptions/?company_id=QRQcvq&onsite=true",
+    "url": "https://enfield-council.msgfocus.com/k/Enfield-Council/sign_up",
     "data": {
-      "type": "subscription",
-      "attributes": {
-        "events": {
-          "data": [
-            {
-              "type": "event",
-              "attributes": {
-                "metric": {
-                  "data": {
-                    "type": "metric",
-                    "attributes": {
-                      "name": "Form submitted by profile",
-                      "service": "api"
-                    }
-                  }
-                },
-                "profile": {
-                  "data": {
-                    "type": "profile",
-                    "attributes": {
-                      "email": "{email}",
-                      "properties": {
-                        "$email": "{email}"
-                      }
-                    }
-                  }
-                },
-                "properties": {
-                  "form_id": "UDR8eC",
-                  "form_version_id": 13171777,
-                  "page": "https://www.paramountshop.co.uk/collections/south-park-toys-collectibles",
-                  "device_type": "desktop",
-                  "$use_ip": true,
-                  "$is_session_activity": true,
-                  "$is_client_event": false
-                }
-              }
-            },
-            {
-              "type": "event",
-              "attributes": {
-                "metric": {
-                  "data": {
-                    "type": "metric",
-                    "attributes": {
-                      "name": "Form completed by profile",
-                      "service": "api"
-                    }
-                  }
-                },
-                "profile": {
-                  "data": {
-                    "type": "profile",
-                    "attributes": {
-                      "email": "{email}",
-                      "properties": {
-                        "$email": "{email}"
-                      }
-                    }
-                  }
-                },
-                "properties": {
-                  "form_id": "UDR8eC",
-                  "form_version_id": 13171777,
-                  "page": "https://www.paramountshop.co.uk/collections/south-park-toys-collectibles",
-                  "device_type": "desktop",
-                  "$use_ip": true,
-                  "$is_session_activity": true,
-                  "$is_client_event": false
-                }
-              }
-            }
-          ]
-        },
-        "profile": {
-          "data": {
-            "type": "profile",
-            "attributes": {
-              "email": "{email}",
-              "subscriptions": {
-                "email": {
-                  "marketing": {
-                    "consent": "SUBSCRIBED"
-                  }
-                }
-              },
-              "properties": {
-                "Birthday": "09/11/2016",
-                "$consent_method": "Klaviyo Form",
-                "$consent_form_id": "UDR8eC",
-                "$consent_form_version": 13171777,
-                "services": "{\"shopify\":{\"source\":\"form\"}}",
-                "$timezone_offset": 0
-              }
-            }
-          }
-        },
-        "custom_source": "Welcome Email Signup - with birthday"
-      },
-      "relationships": {
-        "list": {
-          "data": {
-            "type": "list",
-            "id": "SdJjqU"
-          }
+      "email_22": "{email}",
+      "submit": "Submit"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.elfster.com/v1/auth/.request-email-verification-code",
+    "data": {
+      "email": "{email}"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://jai.vin/api/trpc/auth.sendCode?batch=1",
+    "data": {
+      "0": {
+        "json": {
+          "email": "{email}"
         }
       }
-    },
-    "headers": {
-      ":authority": "a.klaviyo.com",
-      ":method": "POST",
-      ":path": "/client/subscriptions/?company_id=QRQcvq&onsite=true",
-      ":scheme": "https",
-      "accept": "application/json",
-      "accept-encoding": "gzip, deflate, br, zstd",
-      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-      "access-control-allow-headers": "*",
-      "content-length": "1563",
-      "content-type": "application/json",
-      "origin": "https://www.paramountshop.co.uk",
-      "priority": "u=1, i",
-      "referer": "https://www.paramountshop.co.uk/",
-      "revision": "2025-01-15",
-      "sec-ch-ua": "\"Not(A:Brand\";v=\"99\", \"Google Chrome\";v=\"133\", \"Chromium\";v=\"133\"",
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": "\"Windows\"",
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "cross-site",
-      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
-      "x-datadome-clientid": ".keep",
-      "x-klaviyo-js-url": "path",
-      "x-klaviyo-onsite": "1"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://trashmail.com/?api=1&cmd=register_account&lang=en",
+    "data": {
+      "user": "{username}",
+      "pass": "lolwtf",
+      "pass-cfrm": "lolwtf",
+      "email": "{email}",
+      "newsletter": true
     }
   }
 ]
