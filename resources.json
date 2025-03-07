@@ -124,7 +124,7 @@
         }
       }
     },
-    "params":{
+    "headers":{
   ":authority": "a.klaviyo.com",
   ":method": "POST",
   ":path": "/client/subscriptions/?company_id=QRQcvq&onsite=true",
