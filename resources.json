@@ -48,5 +48,17 @@
       "email": "{email}",
       "newsletter": true
     }
+  },
+  {
+    "email": true,
+    "method": "GET",
+    "url": "https://consequenceofsound.activehosted.com/proc.php",
+    "params": {
+        "f": "86",
+        "act": "sub",
+        "v": "2",
+        "email": "{email}",
+        "jsonp": "true"
+    }
   }
 ]
