@@ -102,5 +102,16 @@
       "phoneNumber": "{number}",
       "phoneCountry": "US"
     }
+  },
+  {
+    "email":true,
+    "url":"https://www.dreamhomesource.com/account/register?redirectUrl=",
+    "data":{
+	"source": "registerPage",
+	"email": "{email}",
+	"country": "US",
+	"state": "AL",
+	"newsletter": "on"
+}
   }
 ]
