@@ -22,24 +22,6 @@
   },
   {
     "email": true,
-    "url": "https://www.elfster.com/v1/auth/.request-email-verification-code",
-    "data": {
-      "email": "{email}"
-    }
-  },
-  {
-    "email": true,
-    "url": "https://jai.vin/api/trpc/auth.sendCode?batch=1",
-    "data": {
-      "0": {
-        "json": {
-          "email": "{email}"
-        }
-      }
-    }
-  },
-  {
-    "email": true,
     "url": "https://trashmail.com/?api=1&cmd=register_account&lang=en",
     "data": {
       "user": "{username}",
