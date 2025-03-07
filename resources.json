@@ -14,19 +14,115 @@
   },
   {
     "email": true,
-    "url": "https://eu-central-1.api.clockify.me/auth/verification/code/{email}",
-    "json": {
-      "terms": [
-        {
-          "term": "Cake"
+    "url": "https://a.klaviyo.com/client/subscriptions/?company_id=QRQcvq&onsite=true",
+    "data": {
+      "type": "subscription",
+      "attributes": {
+        "events": {
+          "data": [
+            {
+              "type": "event",
+              "attributes": {
+                "metric": {
+                  "data": {
+                    "type": "metric",
+                    "attributes": {
+                      "name": "Form submitted by profile",
+                      "service": "api"
+                    }
+                  }
+                },
+                "profile": {
+                  "data": {
+                    "type": "profile",
+                    "attributes": {
+                      "email": "{email}",
+                      "properties": {
+                        "$email": "{email}"
+                      }
+                    }
+                  }
+                },
+                "properties": {
+                  "form_id": "UDR8eC",
+                  "form_version_id": 13171777,
+                  "page": "https://www.paramountshop.co.uk/collections/south-park-toys-collectibles",
+                  "device_type": "desktop",
+                  "$use_ip": true,
+                  "$is_session_activity": true,
+                  "$is_client_event": false
+                }
+              }
+            },
+            {
+              "type": "event",
+              "attributes": {
+                "metric": {
+                  "data": {
+                    "type": "metric",
+                    "attributes": {
+                      "name": "Form completed by profile",
+                      "service": "api"
+                    }
+                  }
+                },
+                "profile": {
+                  "data": {
+                    "type": "profile",
+                    "attributes": {
+                      "email": "{email}",
+                      "properties": {
+                        "$email": "{email}"
+                      }
+                    }
+                  }
+                },
+                "properties": {
+                  "form_id": "UDR8eC",
+                  "form_version_id": 13171777,
+                  "page": "https://www.paramountshop.co.uk/collections/south-park-toys-collectibles",
+                  "device_type": "desktop",
+                  "$use_ip": true,
+                  "$is_session_activity": true,
+                  "$is_client_event": false
+                }
+              }
+            }
+          ]
+        },
+        "profile": {
+          "data": {
+            "type": "profile",
+            "attributes": {
+              "email": "{email}",
+              "subscriptions": {
+                "email": {
+                  "marketing": {
+                    "consent": "SUBSCRIBED"
+                  }
+                }
+              },
+              "properties": {
+                "Birthday": "09/11/2016",
+                "$consent_method": "Klaviyo Form",
+                "$consent_form_id": "UDR8eC",
+                "$consent_form_version": 13171777,
+                "services": "{\"shopify\":{\"source\":\"form\"}}",
+                "$timezone_offset": 0
+              }
+            }
+          }
+        },
+        "custom_source": "Welcome Email Signup - with birthday"
+      },
+      "relationships": {
+        "list": {
+          "data": {
+            "type": "list",
+            "id": "SdJjqU"
+          }
         }
-      ],
-      "timeZone": "Europe/London",
-      "currentLang": "en",
-      "abTestingTrackingRequest": {
-        "test": "Mega menu changed - A"
       }
     }
-	  
   }
 ]
