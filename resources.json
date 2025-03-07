@@ -75,5 +75,15 @@
 		"review": "I love bike"
 	}
 }
-  }
+  },
+	{
+		"email":true,
+		"url":"https://www.autoevolution.com/sendtip/",
+		"data":{
+	"_sent": "1",
+	"ftext": "What's+with+these+homies,+dissing+my+girl?\r\nWhy+do+they+gotta+front?\r\nWhat+did+we+ever+do+to+these+guys\r\nThat+made+them+so+violent?\r\nWoo-hoo\r\nBut+you+know+I'm+yours\r\nWoo-hoo\r\nAnd+I+know+you're+mine\r\nWoo-hoo\r\n(And+that's+for+all+time)\r\nOoh-wee-hoo,+I+look+just+like+Buddy+Holly\r\nOh-oh,+and+you're+Mary+Tyler+Moore\r\nI+don't+care+what+they+say+about+us+anyway\r\nI+don't+care+about+that\r\nDon't+you+ever+fear,+I'm+always+near\r\nI+know+that+you+need+help\r\nYour+tongue+is+twisted,+your+eyes+are+slit\r\nYou+need+a+guardian\r\nWoo-hoo\r\nAnd+you+know+I'm+yours\r\nWoo-hoo\r\nAnd+I+know+you're+mine\r\nWoo-hoo\r\n(And+that's+for+all+time)\r\nOoh-wee-hoo,+I+look+just+like+Buddy+Holly\r\nOh-oh,+and+you're+Mary+Tyler+Moore\r\nI+don't+care+what+they+say+about+us+anyway\r\nI+don't+care+about+that\r\nI+don't+care+about+that\r\nBang,+bang,+a+knock+on+the+door\r\nAnother+big+bang+and+you're+down+on+the+floor\r\nOh+no!+What+do+we+do?\r\nDon't+look+now,+but+I+lost+my+shoe\r\nI+can't+run,+and+I+can't+kick\r\nWhat's+the+matter+babe,+are+you+feeling+sick?\r\nWhat's+the+matter,+what's+the+matter,+what's+the+matter+you?\r\nWhat's+the+matter+babe,+are+you+feeling+blue?\r\nOoh-wee-hoo,+I+look+just+like+Buddy+Holly\r\nOh-oh,+and+you're+Mary+Tyler+Moore\r\nI+don't+care+what+they+say+about+us+anyway\r\nI+don't+care+about+that\r\nI+don't+care+about+that\r\nI+don't+care+about+that\r\nI+don't+care+about+that",
+	"femail": "{email}",
+	"fwantack": "1"
+}
+	}
 ]
