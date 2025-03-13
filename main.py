@@ -12,7 +12,6 @@ TITLE = Center.XCenter(fade.water("""
 ▐█▌██▐█▌██▄▪▐█▐█▌.▐▌▪▐█·█▌    ██▄▪▐█▐█▌.▐▌██ ██▌▐█▌██▄▪▐█▐█▄▄▌▐█•█▌
 ▀▀▀▀▀ █▪·▀▀▀▀  ▀█▄▀▪•▀▀ ▀▀    ·▀▀▀▀  ▀█▄▀▪▀▀  █▪▀▀▀·▀▀▀▀  ▀▀▀ .▀  ▀
 """))
-print(Style.BRIGHT, "what")
 
 def clear():
     if os.name == 'nt':  # For Windows
@@ -22,7 +21,7 @@ def clear():
     print(TITLE)
 
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0"}
-TIMEOUT = aiohttp.ClientTimeout(total=5)
+TIMEOUT = aiohttp.ClientTimeout(total=3)
 SOURCE = "https://raw.githack.com/Inkthirsty/inbox-bomber/refs/heads/main/resources.json"
 DEBUG = False
 ONLY_TEST_LAST = False
