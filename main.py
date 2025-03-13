@@ -26,9 +26,6 @@ SOURCE = "https://raw.githack.com/Inkthirsty/inbox-bomber/refs/heads/main/resour
 DEBUG = False
 ONLY_TEST_LAST = False
 
-sent = 0
-errors = 0
-
 def identify(initial_input: str):
     initial_input = initial_input.strip()
     email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
@@ -78,8 +75,6 @@ async def request(
     number: str = None,
     pbar: tqdm = None
 ):
-    global sent, errors
-
     try:
         def fix(payload):
             replacements = {
@@ -100,20 +95,16 @@ async def request(
                 return str(payload)
         async with session.request(method=method or "POST", url=fix(url), json=fix(json_), data=fix(data), params=fix(params), headers=fix(headers)) as resp:
             resp.raise_for_status()
-            sent += 1
             if DEBUG:
                 logging.info(f"Request to {fix(url).split('/')[2]} succeeded with status {resp.status}")
                 logging.debug(f"Response: {(await resp.text())[:100]}")
             if pbar:
-                pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
                 pbar.update(1)
             return True
     except Exception as e:
-        errors += 1 
         if DEBUG:
             logging.error(f"{url} {e}")
         if pbar:
-            pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
             pbar.update(1) 
         return False
 
@@ -135,17 +126,12 @@ def get_email_combos(email: str) -> list:
     return [f"{variant}@{domain}" for variant in variants]
 
 async def main():
-    global sent, errors 
-    
     logging.basicConfig(
         level=logging.DEBUG,
         format=f"{Fore.RED}%(levelname)s:{Fore.RESET} %(message)s"
     )
     
     while True:
-        sent = 0
-        errors = 0
-        
         while True:
             clear()
             print(f"Examples: {Fore.BLUE}hello@example.com{Fore.RESET} | {Fore.BLUE}+1 (202) 555-0173{Fore.RESET} | {Fore.BLUE}+44 20 7946 0958{Fore.RESET} | {Fore.BLUE}12025550173{Fore.RESET}")
@@ -194,14 +180,13 @@ async def main():
                     total=len(functions),
                     desc="Sending emails",
                     ncols=120,
-                    bar_format="{l_bar}{bar} | {n_fmt}/{total_fmt} [{elapsed} elapsed]"
+                    bar_format="{l_bar}{bar} | {n_fmt}/{total_fmt} [{elapsed} elapsed] "
                 ) as pbar:
                     for i in range(0, len(functions), batch_size):
                         batch = functions[i:i+batch_size]
                         tasks = [asyncio.create_task(request(*data, pbar=pbar)) for data in batch]
                         await asyncio.gather(*tasks)
                         await asyncio.sleep(0)
-                        pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
 
 
         print("Press enter to continue")
