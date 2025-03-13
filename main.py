@@ -111,7 +111,7 @@ async def request(
 def get_email_combos(email: str) -> list:
     name, domain = email.split("@", 1)
     
-    if "." in name:
+    if any(i in name for i in [".", "+"]):
         return [email]
     
     variants = [name]
@@ -153,10 +153,7 @@ async def main():
                 THREADS = 1
             elif TYPE == "Email":
                 EMAIL = PROCESSED.get("Email")
-                if "." in EMAIL.split("@")[0]:
-                    COMBOS = [EMAIL]
-                else:
-                    COMBOS = get_email_combos(EMAIL)
+                COMBOS = get_email_combos(EMAIL)
                 LIMIT = clamp(len(COMBOS), 1, 1_000)
                 print(f"How many emails per request? 1-{LIMIT}")
                 try:
