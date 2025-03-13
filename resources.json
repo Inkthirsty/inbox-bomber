@@ -22,24 +22,6 @@
   },
   {
     "email": true,
-    "url": "https://www.elfster.com/v1/auth/.request-email-verification-code",
-    "data": {
-      "email": "{email}"
-    }
-  },
-  {
-    "email": true,
-    "url": "https://jai.vin/api/trpc/auth.sendCode?batch=1",
-    "data": {
-      "0": {
-        "json": {
-          "email": "{email}"
-        }
-      }
-    }
-  },
-  {
-    "email": true,
     "url": "https://trashmail.com/?api=1&cmd=register_account&lang=en",
     "data": {
       "user": "{username}",
@@ -77,20 +59,457 @@
     }
   },
   {
-    "email": true,
-    "url": "https://fineartamerica.com/queries/queryGlobalEmailSubscriptionPopUp.php",
-    "data": {
-      "action": "submit",
-      "email": "{email}",
-      "sourcePage": "/"
-    }
-  },
-  {
     "number": 4,
     "url": "https://fineartamerica.com/queries/queryRegistrationSendSMS.php",
     "data": {
       "phoneNumber": "{number}",
       "phoneCountry": "US"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.dreamhomesource.com/account/register?redirectUrl=",
+    "data": {
+      "source": "registerPage",
+      "email": "{email}",
+      "country": "US",
+      "state": "AL",
+      "newsletter": "on"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://cbart.net/api/register.php",
+    "params": {
+      "send_email_code": "1",
+      "email": "{email}"
+    }
+  },
+  {
+    "url": "https://ukstore.paramore.net/a/app/vice-versa/api/subscribe",
+    "json": {
+      "countrycode": "GB",
+      "email": "{email}"
+    }
+  },
+  {
+    "method": "GET",
+    "url": "https://assets.mailerlite.com/jsonp/911652/forms/118846676753450836/subscribe",
+    "params": {
+      "callback": "jQuery37103632046392270035_1732324167119",
+      "fields[email]": "{email}",
+      "ml-submit": "1",
+      "anticsrf": "true",
+      "ajax": "1",
+      "guid": "",
+      "_": "{timestamp}"
+    }
+  },
+  {
+    "url": "https://6c76cb50.sibforms.com/serve/MUIEACHpZZSYh-t6g01O23SQes8SxW5zD48CO2dNI8Efn2pJBbjFFisIE9ZaC3gi4fxO9hkiC9aStJqPp1oOCH3D9S1ckhT1pVgNOTCJYsKY6QcY2UzWsBdcQqpbPAyyxqrZSFxNpD8lCG_hdChngHo_GKCznLARyUnSQzNzWlarTh8pn9bOCDU2vNGwqHSiHMYYfR-CH1p4r9YO?isAjax=1",
+    "data": {
+      "FIRSTNAME": "{username}",
+      "EMAIL": "{email}",
+      "email_address_check": "",
+      "locale": "en"
+    }
+  },
+  {
+    "url": "https://unison.audio/wp-admin/admin-ajax.php",
+    "data": {
+      "action": "cs_registration_true",
+      "regusername": "{username}",
+      "regupass": "G3!z#9sLpXq",
+      "regumail": "{email}",
+      "sign_up_newsletter": "1"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://nebula.tv/auth/registration/",
+    "json": {
+      "agreed_to_terms": true,
+      "email": "{email}",
+      "opt_in_to_communications": false,
+      "password": "G3!z#9sLpXq"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://pubapi.pubmeeple.com/user/",
+    "json": {
+      "name": "registerUser",
+      "param": {
+        "email": "{email}",
+        "name": "{username}"
+      }
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.speedrun.com/api/v2/PutAuthSignup",
+    "json": {
+      "name": "{username}",
+      "password": "G3!z#9sLpXq",
+      "email": "{email}",
+      "areaId": "as"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://character.ai/api/trpc/auth.login?batch=1",
+    "json": {
+      "0": {
+        "json": {
+          "email": "{email}"
+        }
+      }
+    }
+  },
+  {
+    "email": true,
+    "url": "https://jollibee-ap.appspot.com/api/v1/menu/member.json",
+    "data": {
+      "verify": "before",
+      "type": "email",
+      "brandId": "4806394001752064",
+      "crmId": "4806394001752064",
+      "email": "{email}",
+      "locale": "en"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://pixlr.com/auth/register",
+    "json": {
+      "country": "RO",
+      "email": "{email}",
+      "newsletter": true,
+      "password": "A7d9!xLq3p"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.farmfoods.co.uk/includes/mailing_list/join-club.php",
+    "data": {
+      "email_address": "{email}",
+      "campaign": ""
+    }
+  },
+  {
+    "email": true,
+    "url": "https://spektrix.barbican.org.uk/barbicancentre/api/v3/customer?$expand=AgreedStatements,AllStatements,subscriptions/membership,tags,storedCards",
+    "json": {
+      "agreedStatements": [
+        "201AGBHDRLQHNHPHKKMPKLGPMDRDTDMVL"
+      ],
+      "email": "{email}",
+      "firstName": "Kill",
+      "lastName": "Yourself",
+      "password": "G4f$9LmT7w"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://use1-prod-fhs-gateway.rbictg.com/graphql",
+    "json": {
+      "operationName": "SignUp",
+      "query": "mutation SignUp($input: SignUpUserInput!) {\n  signUp(userInfo: $input)\n}\n",
+      "variables": {
+        "input": {
+          "country": "USA",
+          "dob": "",
+          "name": "ff",
+          "phoneNumber": "+12312341234",
+          "platform": "web",
+          "stage": "prod",
+          "userName": "{email}",
+          "wantsPromotionalEmails": true,
+          "zipcode": ""
+        }
+      }
+    }
+  },
+  {
+    "email": true,
+    "url": "https://account.bbc.com/auth/v2/register",
+    "json": {
+      "location": "gb",
+      "password": "Pq8!kZm2Xy",
+      "dateOfBirthMonth": "9",
+      "dateOfBirthDay": "11",
+      "dateOfBirthYear": "2001",
+      "postcode": "EH52JH",
+      "gender": "male",
+      "email": "{email}"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://kaiber.ai/api/auth/register",
+    "json": {
+      "email": "{email}",
+      "password": "R9t*6BnQ5v",
+      "passwordConfirmation": "R9t*6BnQ5v",
+      "newsletter": true
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.falconcomputers.co.uk/myaccount/register",
+    "data": {
+      "email": "{email}",
+      "password": "Jx3#yLp8Zn",
+      "confirmemail": "{email}",
+      "confirmpassword": "Jx3#yLp8Zn"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://api.well.co.uk/users/v3/register",
+    "json": {
+      "email": "{email}",
+      "first_name": "Rivers",
+      "last_name": "Cuomo",
+      "marketing_consent": true,
+      "password": "Kq7!mXn4Lp",
+      "terms_and_conditions": true
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.diplomacy.edu/wp-admin/admin-ajax.php",
+    "data": {
+      "action": "process_form_submission",
+      "form_data": "group-1b50ac48d%5B%5D=86484d799e&group-15b50ac48d%5B%5D=74130513f1&group-15b50ac48d%5B%5D=65b8753f5f&group-15b50ac48d%5B%5D=692ab77193&group-15b50ac48d%5B%5D=649f9980df&group-43badd3a06%5B%5D=3688bacdf5&group-43badd3a06%5B%5D=9e69e45f01&group-43badd3a06%5B%5D=15abf6e35b&EMAIL={email}&yikes-mailchimp-honeypot=&yikes-mailchimp-associated-list-id=4510155485&yikes-mailchimp-submitted-form=14&yikes_easy_mc_new_subscriber=47250172b9&_wp_http_referer=%2Fsubscribe%2F",
+      "form_id": "14",
+      "page_data": "233740",
+      "ajax_security_nonce": "10c34c2947"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://api.ekmresponse.com/api/recipient/signup",
+    "data": {
+      "Email": "{email}",
+      "UserID": "17499",
+      "GroupID": "46598",
+      "Hash2": "a823e4017a1963bf027651050f44a7bf"
+    }
+  },
+  {
+    "email": true,
+    "bias": true,
+    "url": "https://www.silver.uk.com/account",
+    "data": {
+      "form_type": "create_customer",
+      "utf8": "✓",
+      "customer[first_name]": "aaaa",
+      "customer[last_name]": "aaaaaaaaa",
+      "customer[email]": "{email}",
+      "customer[password]": "{password}",
+      "login_with_shop[analytics_trace_id]": ""
+    }
+  },
+  {
+    "email": true,
+    "url": "https://assets.mailerlite.com/jsonp/329724/forms/101631485514089599/subscribe",
+    "params": {
+      "callback": "jQuery18307765256266183702_1727373695399",
+      "fields[email]": "{email}",
+      "ml-submit": "1",
+      "anticsrf": "true",
+      "ajax": "1",
+      "guid": "40cd1442-229c-5cbe-409a-7f7252ba24c4",
+      "_": "{timestamp}"
+    }
+  },
+  {
+    "email": true,
+    "note": "sends 3 emails ^_^",
+    "url": "https://pitchfork.com/api/savePreference",
+    "json": {
+      "amgUUID": "",
+      "email": "{email}",
+      "isLoggedIn": false,
+      "metadata": {
+        "client": "Verso-Pitchfork",
+        "formname": "newsletter-subscribe-multiple",
+        "source": "subscribe-page"
+      },
+      "sailthruId": null,
+      "variables": {
+        "consents": [
+          {
+            "id": "248912",
+            "status": true,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "newsletter"
+          },
+          {
+            "id": "248945",
+            "status": true,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "newsletter"
+          },
+          {
+            "id": "248913",
+            "status": true,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "newsletter"
+          },
+          {
+            "id": "657fe98d6be3b0fdf26b81ab",
+            "status": false,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "marketing"
+          },
+          {
+            "id": "657fe98d6be3b0fdf26b81ac",
+            "status": false,
+            "timestamp": "2024-10-05T22:36:16.850Z",
+            "type": "marketing"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "email": true,
+    "url": "https://3c001f47.sibforms.com/serve/MUIFAPK6LYra5jArrocQMvLumnhV3VBXfc8_oFqcTUzFR_511muTBHNBltXwLA3LTsiAJgae2m3b4XEWTkwqbwA8G-cUzDdhei9PWZBrMRPOvFU7KKf4bB-jocQcKfK68aSmlPLUgN8RV-4bmC3PDIxsNZxxNRbrAuy0u0HrL1lRUOt4HidhG_1ubfL_cDOCkAISrs1WlIZbAlgj",
+    "data": {
+      "EMAIL": "{email}",
+      "email_address_check": "",
+      "locale": "en",
+      "html_type": "simple"
+    }
+  },
+  {
+    "email": true,
+    "note": "sends 2 emails: verify and a reminder",
+    "url": "https://account.bbc.com/auth/v2/register?ab=o13&action=register&clientId=Account&isCasso=false&lang=en-GB&nonce=byboJgSb-4O3GvcZHwj2AdTgy18S6QeXX0MY&ptrt=https%3A%2F%2Fwww.bbc.co.uk%2F&realm=%2F&redirectUri=https%3A%2F%2Fsession.bbc.co.uk%2Fsession%2Fcallback%3Frealm%3D%2F&sequenceId=fba4af75-c4d5-453d-8a9a-3151e4626c9b&service=IdSignInService",
+    "json": {
+      "location": "gb",
+      "password": "{password}",
+      "dateOfBirthMonth": "9",
+      "dateOfBirthDay": "11",
+      "dateOfBirthYear": "2001",
+      "postcode": "EH52JH",
+      "gender": "male",
+      "email": "{email}"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://substack.com/api/v1/reader/signup/just_email",
+    "json": {
+      "publicationIds": "458709,10845,556800,329241,35345,471923,737237",
+      "email": "{email}"
+    }
+  },
+  {
+    "email": true,
+    "note": "likes to spam every few days",
+    "url": "https://www.bbcgoodfood.com/api/pages/forms/newsletter-signup",
+    "data": {
+      "newsletter": "nl_bbcgf_health--850",
+      "email": "{email}"
+    },
+    "headers": {
+      "Host": "www.bbcgoodfood.com",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.altontowers.com/umbraco/api/signupform/submit",
+    "json": {
+      "__RequestVerificationToken": "",
+      "Language": "en",
+      "Attraction": "PAT",
+      "Campaign": "brandsite",
+      "Source": "Website",
+      "SourceDetail": "www.altontowers.com/sign-up/",
+      "ConsentType": "Merlin Global",
+      "FallbackCountry": "GB",
+      "EnableRecaptcha": "False",
+      "Email": "{email}",
+      "FirstName": "{random}",
+      "Lastname": "Floyd",
+      "Permission": "on"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://api.well.co.uk/users/v3/register?redirect_to=/vicks/",
+    "json": {
+      "email": "{email}",
+      "first_name": "Rivers",
+      "last_name": "Cuomo",
+      "marketing_consent": true,
+      "password": "{password}",
+      "target": "customer-web",
+      "terms_and_conditions": true
+    }
+  },
+  {
+    "email": true,
+    "nsfw": true,
+    "note": "delayed emails, this is a sex toy website (u could tell i was running out of ideas )",
+    "url": "https://newsletters.bondara.co.uk/public/quickstart/signup_footer.jsp",
+    "data": {
+      "email": "{email}"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://app.smartsheet.com/loginv2/otp/sendRedirect",
+    "note": "infinitely resend emails ^_^",
+    "data": {
+      "loginEmail": "{email}"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://www.merlinentertainments.biz/newsroom/subscription-centre/",
+    "data": {
+      "__RequestVerificationToken": "0w3cHbNH3gORwAiyaIIlqyDym3_4DxCe4LuJWLJywK0mU3b3fxlV1soaleGksYeQuzEfZSCJZ6h99jIMgi1EXsnkS7ARDqHPZoMmOO_qvmc1",
+      "EmailAddress": "{email}",
+      "FullName": "",
+      "Company": "",
+      "Role": "Institutional Investor",
+      "AllNewsTypes[0].IsChecked": "true",
+      "AllNewsTypes[0].Name": "Brand and attraction news",
+      "AllNewsTypes[1].IsChecked": "false",
+      "AllNewsTypes[1].Name": "Corporate and business news",
+      "AllNewsTypes[2].IsChecked": "true",
+      "AllNewsTypes[2].Name": "All News",
+      "ConsentChecked": "true",
+      "ufprt": "8E060B2BBCEC57E4216C73155BD4C7A3895ADE5A17BFBFE55B0CD78B8B6FFEC5C9E2A8C12AB9F8CE7B56F660333BE3B6E4ED9A9F90C6D70024D4CBFDAD4183242C8C4138E2B726267B41AF867730D20DB890457765EDF993EC59F30CF0859E821E9FC81DD78BAD978A4181B434EB3A2D0C95FA932D55AE5ABFF0B71DE1EDB688"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://hatstore.co.uk/resources/newsletter",
+    "json": {
+      "email": "{email}",
+      "siteKey": "hsuk"
+    }
+  },
+  {
+    "email": true,
+    "url": "https://eu-central-1.api.clockify.me/auth/verification/code/{email}",
+    "json": {
+      "terms": [
+        {
+          "term": "Cake"
+        }
+      ],
+      "timeZone": "Europe/London",
+      "currentLang": "en",
+      "abTestingTrackingRequest": {
+        "test": "Mega menu changed - A"
+      }
     }
   }
 ]
