@@ -1,7 +1,7 @@
 import aiohttp, asyncio, time, fade, phonenumbers, re, json, os, logging, string, random, itertools
 from colorama import Fore, Style
 from pystyle import Center
-from typing import List, Dict, Any, Optional
+from typing import Dict, Any, Optional
 from phonenumbers import is_valid_number, format_number, PhoneNumberFormat
 from tqdm import tqdm  # For the progress bar
 
@@ -12,6 +12,7 @@ TITLE = Center.XCenter(fade.water("""
 ▐█▌██▐█▌██▄▪▐█▐█▌.▐▌▪▐█·█▌    ██▄▪▐█▐█▌.▐▌██ ██▌▐█▌██▄▪▐█▐█▄▄▌▐█•█▌
 ▀▀▀▀▀ █▪·▀▀▀▀  ▀█▄▀▪•▀▀ ▀▀    ·▀▀▀▀  ▀█▄▀▪▀▀  █▪▀▀▀·▀▀▀▀  ▀▀▀ .▀  ▀
 """))
+print(Style.BRIGHT, "what")
 
 def clear():
     if os.name == 'nt':  # For Windows
@@ -64,7 +65,6 @@ def gen(length: int = 5):
     return str(time.time()).replace(".", "") + ba.decode("ascii")
 
 async def request(
-    session: aiohttp.ClientSession, 
     url: str, 
     method: str = "POST", 
     json_: Optional[Dict[Any, Any]] = None, 
@@ -75,38 +75,39 @@ async def request(
     number: str = None,
     pbar: tqdm = None
 ):
-    try:
-        def fix(payload):
-            replacements = {
-                "{email}": email or f"{str(time.time())}@{gen()}.com",
-                "{number}": number,
-                "{username}": gen(),
-                "{timestamp}": str(int(time.time()))
-            }
-            if payload is None:
-                return None
-            try:
-                temp = json.dumps(payload) if isinstance(payload, dict) else str(payload)
-                for k, v in replacements.items():
-                    if v is not None:
-                        temp = temp.replace(k, v)
-                return json.loads(temp) if isinstance(payload, dict) else temp
-            except Exception:
-                return str(payload)
-        async with session.request(method=method or "POST", url=fix(url), json=fix(json_), data=fix(data), params=fix(params), headers=fix(headers)) as resp:
-            resp.raise_for_status()
+    async with aiohttp.ClientSession() as session:
+        try:
+            def fix(payload):
+                replacements = {
+                    "{email}": email or f"{str(time.time())}@{gen()}.com",
+                    "{number}": number,
+                    "{username}": gen(),
+                    "{timestamp}": str(int(time.time()))
+                }
+                if payload is None:
+                    return None
+                try:
+                    temp = json.dumps(payload) if isinstance(payload, dict) else str(payload)
+                    for k, v in replacements.items():
+                        if v is not None:
+                            temp = temp.replace(k, v)
+                    return json.loads(temp) if isinstance(payload, dict) else temp
+                except Exception:
+                    return str(payload)
+            async with session.request(method=method or "POST", url=fix(url), json=fix(json_), data=fix(data), params=fix(params), headers=fix(headers)) as resp:
+                resp.raise_for_status()
+                if DEBUG:
+                    logging.info(f"Request to {fix(url).split('/')[2]} succeeded with status {resp.status}")
+                    logging.debug(f"Response: {(await resp.text())[:100]}")
+                if pbar:
+                    pbar.update(1)
+                return True
+        except Exception as e:
             if DEBUG:
-                logging.info(f"Request to {fix(url).split('/')[2]} succeeded with status {resp.status}")
-                logging.debug(f"Response: {(await resp.text())[:100]}")
+                logging.error(f"{url} {e}")
             if pbar:
-                pbar.update(1)
-            return True
-    except Exception as e:
-        if DEBUG:
-            logging.error(f"{url} {e}")
-        if pbar:
-            pbar.update(1) 
-        return False
+                pbar.update(1) 
+            return False
 
 def get_email_combos(email: str) -> list:
     name, domain = email.split("@", 1)
@@ -169,9 +170,9 @@ async def main():
                 if ONLY_TEST_LAST:
                     selection = selection[-1:]
                 if TYPE == "Number":
-                    functions = [(session, i.get("url"), i.get("method"), i.get("json"), i.get("data"), i.get("params"), i.get("headers", {}), None, PROCESSED.get("Formats")[i.get("number") - 1]) for i in selection]
+                    functions = [(i.get("url"), i.get("method"), i.get("json"), i.get("data"), i.get("params"), i.get("headers", {}), None, PROCESSED.get("Formats")[i.get("number") - 1]) for i in selection]
                 elif TYPE == "Email":
-                    functions = [(session, i.get("url"), i.get("method"), i.get("json"), i.get("data"), i.get("params"), i.get("headers", {}), email, None) for email in COMBOS[:THREADS] for i in selection]
+                    functions = [(i.get("url"), i.get("method"), i.get("json"), i.get("data"), i.get("params"), i.get("headers", {}), email, None) for email in COMBOS[:THREADS] for i in selection]
 
                 with tqdm(
                     total=len(functions),
