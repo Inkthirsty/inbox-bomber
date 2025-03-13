@@ -163,7 +163,7 @@ async def main():
             logging.info(f"Threads: {Fore.CYAN}{THREADS:,}{Fore.RESET}")
             async with session.get(SOURCE) as resp:
                 resp_json = json.loads(await resp.text())
-                logging.info(f"Fetched data from {SOURCE}")
+                logging.info(f"Fetched data from {Fore.CYAN}{SOURCE}{Fore.RESET}")
                 batch_size = 200
                 selection = [i for i in resp_json if i.get(TYPE.lower()) is not None and i.get(TYPE.lower()) is not False]
                 if ONLY_TEST_LAST:
