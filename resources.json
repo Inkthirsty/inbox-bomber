@@ -511,5 +511,71 @@
         "test": "Mega menu changed - A"
       }
     }
-  }
+  },
+  {
+    "email":true,
+    
+    "url": "https://preferencecenter.hearstmags.com/api/preference/signup",
+    "json": {
+      "analyticString1": "",
+      "analyticString2": "",
+      "email": "{email}",
+      "majorSource": "WNL",
+      "minorSource": "MODAL",
+      "preferences": [
+        {
+          "optinValue": "H",
+          "preferenceId": "972F2D27-B3B8-4F75-9227-7EFAAF2E9AF2"
+        }
+      ],
+      "sendToEsp": true
+    },
+    "headers": {
+      "Host": "preferencecenter.hearstmags.com",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0",
+      "Accept": "*/*",
+      "Origin": "https://www.womenshealthmag.com",
+      "Connection": "keep-alive",
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "no-cors",
+      "Sec-Fetch-Site": "cross-site",
+      "Content-Type": "application/json",
+      "Referer": "https://www.womenshealthmag.com/"
+    }
+  },
+  {
+    "email":true,
+    "url": "https://preferencecenter.hearstmags.com/api/preference/signup",
+    "json": {
+      "email": "{email}",
+      "majorSource": "NOSTO",
+      "minorSource": "Module",
+      "preferences": [
+        {
+          "optinValue": "H",
+          "preferenceId": "986687B1-D945-4F70-BE66-21B22779D75D"
+        }
+      ],
+      "sendToEsp": true
+    },
+    "headers": {
+      "Host": "preferencecenter.hearstmags.com",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0",
+      "Accept": "*/*",
+      "Origin": "https://www.womenshealthmag.com",
+      "Connection": "keep-alive",
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "no-cors",
+      "Sec-Fetch-Site": "cross-site",
+      "Content-Type": "application/json",
+      "Referer": "https://membership.menshealth.com/"
+    }
+  },
+  {"email":true,
+    "url": "https://www.electric-heatingcompany.co.uk/wp-admin/admin-ajax.php",
+    "data": {
+      "action": "newsletter",
+      "nonce": "107fa606eb",
+      "email": "{email}"
+    }}
 ]
