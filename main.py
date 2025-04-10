@@ -3,7 +3,7 @@ from colorama import Fore, Style
 from pystyle import Center
 from typing import Dict, Any, Optional
 from phonenumbers import is_valid_number, format_number, PhoneNumberFormat
-from tqdm import tqdm  # For the progress bar
+from tqdm import tqdm
 
 TITLE = Center.XCenter(fade.water("""
 ▪   ▐ ▄ ▄▄▄▄·       ▐▄• ▄     ▄▄▄▄·       • ▌ ▄ ·. ▄▄▄▄· ▄▄▄ .▄▄▄  
@@ -78,7 +78,7 @@ async def request(
     try:
         def fix(payload):
             replacements = {
-                "{email}": email or f"{str(time.time())}@{gen()}.com",
+                "{email}": email or f"{str(time.time())}@gmail.com",
                 "{number}": number,
                 "{username}": gen(),
                 "{timestamp}": str(int(time.time()))
@@ -101,7 +101,15 @@ async def request(
             if pbar:
                 pbar.update(1)
             return True
-    except Exception as e:
+    except aiohttp.ClientError as e:
+        if isinstance(e, aiohttp.ClientConnectionError):
+            pass  # You can silently pass on connection errors like connection resets
+        if DEBUG:
+            logging.error(f"{url} {e}")
+        if pbar:
+            pbar.update(1) 
+        return False
+    except Exception as e:  # Catch any other exceptions
         if DEBUG:
             logging.error(f"{url} {e}")
         if pbar:
@@ -111,7 +119,7 @@ async def request(
 def get_email_combos(email: str) -> list:
     name, domain = email.split("@", 1)
     
-    if any(i in name for i in [".", "+"]):
+    if any(i not in string.digits + string.ascii_letters for i in name):
         return [email]
     
     variants = [name]
@@ -191,4 +199,6 @@ async def main():
         await asyncio.sleep(0)
 
 if __name__ == "__main__":
+    try: asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    except Exception: pass
     asyncio.run(main())
