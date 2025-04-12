@@ -513,8 +513,7 @@
     }
   },
   {
-    "email":true,
-    
+    "email": true,
     "url": "https://preferencecenter.hearstmags.com/api/preference/signup",
     "json": {
       "analyticString1": "",
@@ -544,7 +543,7 @@
     }
   },
   {
-    "email":true,
+    "email": true,
     "url": "https://preferencecenter.hearstmags.com/api/preference/signup",
     "json": {
       "email": "{email}",
@@ -571,11 +570,20 @@
       "Referer": "https://membership.menshealth.com/"
     }
   },
-  {"email":true,
+  {
+    "email": true,
     "url": "https://www.electric-heatingcompany.co.uk/wp-admin/admin-ajax.php",
     "data": {
       "action": "newsletter",
       "nonce": "107fa606eb",
       "email": "{email}"
-    }}
+    }
+  },
+  {
+    "email": true,
+    "url": "https://asl.aldi.co.uk/customer/subscriptions/newsletter",
+    "json": {
+      "email": "17444548225070746@drainer.gay"
+    }
+  }
 ]
