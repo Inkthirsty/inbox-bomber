@@ -1,5 +1,5 @@
-import aiohttp, asyncio, time, fade, phonenumbers, re, json, os, logging, string, random, itertools
-from colorama import Fore, Style
+import aiohttp, asyncio, time, fade, phonenumbers, re, json, os, logging, string, itertools
+from colorama import Fore
 from pystyle import Center
 from typing import Dict, Any, Optional
 from phonenumbers import is_valid_number, format_number, PhoneNumberFormat
